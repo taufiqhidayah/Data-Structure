@@ -32,6 +32,7 @@ int main(){
 				start=display(start);
 				break;
 			case 2 : 
+			start =insert_beg(start);
 				break;
 			case 3:
 				break;
@@ -45,37 +46,66 @@ struct node *display (struct node *start){
 	struct node *ptr;
 	ptr = start;
 	printf("======================\n\n");
- 	printf("NO | Customer Name | Dress Name | Price\n");
+ 	printf("NO\t| Name\t\t\t|Type\t\t\t\t|QTY\t\t|PRICE \n");
  	printf("--------------------------------------------------------------\n");
  	int i=1;
 	while (ptr != NULL){
-		printf("%d. | %12s | %-12s |%d     | Rp. %d \n", i++, ptr->name,ptr->type,ptr->qty,ptr->price);
+		printf("%d. \t| %21s|%21s \t\t|%d \t\t|  $. %d \n", i++, ptr->name,ptr->type,ptr->qty,ptr->price);
 		ptr =ptr->next;
 	}
 	return start;
 }
 struct node *insert_beg(struct node *start){
-	struct node *new_node;
-	int num;
-    printf("\n Enter the data : ");
-    scanf("%d", &num);
-    new_node = (struct node *)malloc(sizeof(struct node));
-    new_node -> ptr = num;
-    new_node -> next = start;
-	start = new_node;
-    return start;
+	system("cls");
+	struct node *ptr, *new_node;
+	char nameUsr[12],nameDrs[12];
+	int priceD,qtyD,a,b,c;
+	do{
+		printf("\n Inpur Name ");
+		scanf("%s",nameUsr);	
+		a = strlen(nameUsr);
+	}while(a>=20 || a<=3 );
+	do{		getchar();
+			printf("\n Inpur Type [processor | graphic card | memory]");
+			scanf("%[^\n]s",nameDrs);
+			getchar();
+	}while(strcmp("processor",nameDrs)!=0 && strcmp("graphic card",nameDrs )!=0 && strcmp("memory",nameDrs )!=0);
+
+	do{
+		printf("\n Inpur QTY ");
+		scanf("%d",&priceD);
+	}while(priceD>=999 && priceD<=50 );
+	do{
+		printf("\n Inpur  Price ");
+		scanf("%d",&priceD);
+	}while(priceD>=999 && priceD<=50 );
+	do{
+		printf("\n Inpur  Price ");
+		scanf("%d",&qtyD);
+	}while(qtyD>=999 && qtyD<=50 );
+	new_node =(struct node *)malloc(sizeof(struct node));
+	strcpy(new_node ->name,nameUsr);
+	strcpy(new_node ->type,nameDrs);
+	new_node -> qty = priceD;
+	new_node -> price = qtyD;
+	new_node ->  next= NULL;
+    ptr = start;
+    while(ptr -> next != NULL)
+    ptr = ptr -> next;
+    ptr -> next = new_node;
+	return start;
 }
 void init(){
 	struct node * new_node;	
 		
-	int	price1[3]={3,15,16};
+	int	price1[3]={3122,15122,16122};
 	int qty1[3]= {12,23,4};
-	char * name[]={"martin","suci","diah"};
-	char * nameDre[]={"Batik","Kain","Kaos"};
+	char * name[]={"ASUS","TOSHOBA","APPLE"};
+	char * Type[]={"X45","AAC","MAC"};
 	for (int i =0;i<3;i++){
 		new_node = (struct node *)malloc(sizeof(struct node));
 		strcpy(new_node ->name,name[i]);
-		strcpy(new_node ->type,nameDre[i]);
+		strcpy(new_node ->type,Type[i]);
 		new_node ->price=price1[i];
 		new_node -> qty =qty1[i];
 		new_node ->next= start;
