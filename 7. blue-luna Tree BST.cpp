@@ -81,8 +81,6 @@ struct node *insertElement(struct node *tree){
 	int val,pil,name_lenght,levelkara;
 	char kara[15];
 	char karajob[15];
-
-
 	do{
 		printf("Input Charackter Name [3..2o]");
 		scanf("%s",kara);
@@ -153,16 +151,14 @@ struct node *insertElement(struct node *tree){
 
 }
 void display(struct node *tree){
-//	 if (tree == NULL){
-//		printf("Tree is no Charackter in the Tree");
-//	}else 
-if(tree != NULL){
+	 if (tree == NULL){
+		printf("Tree is no Charackter in the Tree");
+	}else if(tree != NULL){
 		printf("* %s \t\t |%s \t\t |lvl. %d \t\t|damage : %d \n", tree->karakter,tree->job,tree->level, tree->data);
 		display(tree->left);
 		display(tree->right);
 	}
 }
-
 
 void preorderTraversal(struct node *tree){
 	if(tree != NULL){
