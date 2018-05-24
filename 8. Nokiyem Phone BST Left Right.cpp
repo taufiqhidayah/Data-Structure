@@ -16,6 +16,7 @@ void editVal(struct node *tree);
 void postOrder(struct node*);
 struct node *tree;
 struct node *insertData(struct node *tree);
+
 int main(){
   int pilih;
   do {
