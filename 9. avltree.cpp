@@ -6,18 +6,17 @@ struct Node
     int data;
     struct Node *left;
     struct Node *right;
-}*root;
+}* root;
 
-        int height(Node *);
-        Node *rr_rotation(Node *);
-        Node *ll_rotation(Node *);
-        Node *lr_rotation(Node *);
-        Node *rl_rotation(Node *);
-        Node* balance(Node *);
-        Node* insert(Node *, int );
-        void display(Node *, int);
- 
-        
+    int height(Node *);
+    Node *rr_rotation(Node *);
+    Node *ll_rotation(Node *);
+    Node *lr_rotation(Node *);
+    Node *rl_rotation(Node *);
+    Node* balance(Node *);
+    Node* insert(Node *, int );
+    void display(Node *, int);
+
 int main()
 {
     int choice, item;
@@ -25,7 +24,7 @@ int main()
     {
         system("cls");
         printf("\n---------------------");
-        printf("\nfadhel tree");
+        printf("\nAVL TREE");
         printf("\n---------------------");
         printf("\n1.Insert Element into the tree");
         printf("\n2.Display Balanced AVL Tree");
@@ -48,7 +47,7 @@ int main()
             }
             printf("Balanced AVL Tree:");
             display(root, 1);
-            printf("\nselesai....");getchar();getchar();
+            printf("\nNext....");getchar();getchar();
             break;
             case 6:
             exit(1);    
@@ -159,7 +158,6 @@ void display(Node *ptr, int level){
     int i;
     if (ptr!=NULL)
     {
-        
         display(ptr->right, level + 1);
         printf("\n");
         if (ptr == root)
